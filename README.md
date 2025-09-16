@@ -1,1 +1,90 @@
-# september16th
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffb6c1, #ff69b4);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: white;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    #note {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      min-height: 60px;
+      transition: opacity 0.4s ease-in-out;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #e91e63;
+    }
+    .heart {
+      position: fixed;
+      font-size: 1.5rem;
+      animation: float 4s ease-in infinite;
+      color: rgba(255,255,255,0.8);
+    }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-200px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 A Note Just for You</h1>
+  <div id="note">Click the button for some love 💕</div>
+  <button onclick="newNote()">Give Me Love</button>
+
+  <script>
+    const notes = [
+      "You’re my favorite person in the whole world 🌍❤️",
+      "I’d lose on purpose just to see your victory smile 😏",
+      "If kisses were stars, you’d own the galaxy ✨💋",
+      "You make even Mondays feel like Fridays 💕",
+      "I still get butterflies every time I think of you 🦋",
+      "Being with you is my favorite adventure 🌎💞",
+      "You + Me = Forever my favorite math problem ➕❤️",
+    ];
+
+    function newNote() {
+      const noteBox = document.getElementById("note");
+      noteBox.style.opacity = 0;
+      setTimeout(() => {
+        const randomNote = notes[Math.floor(Math.random() * notes.length)];
+        noteBox.innerText = randomNote;
+        noteBox.style.opacity = 1;
+        makeHearts();
+      }, 400);
+    }
+
+    function makeHearts() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.bottom = "0px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  </script>
+</body>
+</html>
